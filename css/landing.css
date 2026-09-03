@@ -1,15 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap");
 
-:root {
-    --background-dim: #232a2e;
-    --background-alt: #2d353b;
-    --bg-green: #a7c080;
-    --statusline-1: #475258;
-    --text: #d3c6aa;
-    --text-muted: #859289;
-    --green-dark: #38443c;
-}
-
 * {
     box-sizing: border-box;
 }
@@ -20,8 +10,8 @@ html {
 
 body {
     margin: 0;
-    background: #232a2e !important;
-    color: var(--text);
+    background: #232a2e;
+    color: #d3c6aa;
     font-family: "JetBrains Mono", monospace;
 }
 
@@ -38,11 +28,11 @@ a {
     align-items: center;
     justify-content: space-between;
 
-    border-bottom: 3px solid var(--statusline-1);
+    border-bottom: 3px solid #475258;
 }
 
 .logo {
-    color: var(--bg-green);
+    color: #a7c080;
     font-size: 15px;
     font-weight: 700;
 }
@@ -55,14 +45,14 @@ a {
 }
 
 .navbar nav > a:not(.nav-button) {
-    color: var(--text-muted);
+    color: #859289;
 }
 
 .nav-button {
     padding: 8px 17px;
-    border: 2px solid var(--bg-green);
+    border: 2px solid #a7c080;
     border-radius: 50px;
-    color: var(--bg-green);
+    color: #a7c080;
 }
 
 .hero {
@@ -80,7 +70,7 @@ a {
 
 .eyebrow {
     margin: 0 0 18px;
-    color: var(--bg-green);
+    color: #a7c080;
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 2px;
@@ -88,6 +78,8 @@ a {
 
 .hero h1 {
     margin: 0;
+    color: #d3c6aa;
+
     font-size: clamp(42px, 6vw, 76px);
     line-height: 1.05;
     letter-spacing: -3px;
@@ -97,7 +89,8 @@ a {
     max-width: 580px;
     margin: 28px 0 0;
 
-    color: var(--text-muted);
+    color: #859289;
+
     font-size: 14px;
     line-height: 1.9;
 }
@@ -117,7 +110,7 @@ a {
     align-items: center;
     justify-content: center;
 
-    border: 3px solid var(--bg-green);
+    border: 3px solid #a7c080;
     border-radius: 50px;
 
     font-size: 12px;
@@ -125,17 +118,13 @@ a {
 }
 
 .primary-button {
-    background: var(--bg-green);
-    color: var(--background-dim);
+    background: #a7c080;
+    color: #232a2e;
 }
 
 .secondary-button {
-    color: var(--bg-green);
-}
-
-.primary-button:hover,
-.secondary-button:hover {
-    opacity: 0.85;
+    color: #a7c080;
+    background: transparent;
 }
 
 .chat-preview {
@@ -143,11 +132,11 @@ a {
     max-width: 480px;
     margin: auto;
 
-    border: 3px solid var(--statusline-1);
+    border: 3px solid #475258;
     border-radius: 50px;
     overflow: hidden;
 
-    background: var(--background-alt);
+    background: #2d353b;
 }
 
 .preview-header {
@@ -158,7 +147,9 @@ a {
     align-items: center;
     gap: 10px;
 
-    border-bottom: 3px solid var(--statusline-1);
+    border-bottom: 3px solid #475258;
+
+    color: #d3c6aa;
 
     font-size: 12px;
     font-weight: 700;
@@ -168,7 +159,7 @@ a {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: var(--bg-green);
+    background: #a7c080;
 }
 
 .messages {
@@ -188,7 +179,7 @@ a {
 }
 
 .message-name {
-    color: var(--text-muted);
+    color: #859289;
     font-size: 10px;
 }
 
@@ -202,16 +193,19 @@ a {
 
     padding: 12px 16px;
 
-    border: 2px solid var(--statusline-1);
+    border: 2px solid #475258;
     border-radius: 22px;
+
+    background: #232a2e;
+    color: #d3c6aa;
 
     font-size: 12px;
     line-height: 1.5;
 }
 
 .message.own .bubble {
-    border-color: var(--bg-green);
-    background: var(--green-dark);
+    border-color: #a7c080;
+    background: #38443c;
 }
 
 .features {
@@ -222,6 +216,8 @@ a {
 
 .features h2 {
     margin: 0;
+    color: #d3c6aa;
+
     font-size: clamp(30px, 4vw, 48px);
     line-height: 1.2;
     letter-spacing: -2px;
@@ -239,26 +235,27 @@ a {
     min-height: 250px;
     padding: 30px;
 
-    border: 3px solid var(--statusline-1);
+    border: 3px solid #475258;
     border-radius: 40px;
 
-    background: var(--background-alt);
+    background: #2d353b;
 }
 
 .feature-number {
-    color: var(--bg-green);
+    color: #a7c080;
     font-size: 11px;
     font-weight: 700;
 }
 
 .feature-card h3 {
     margin: 55px 0 15px;
+    color: #d3c6aa;
     font-size: 18px;
 }
 
 .feature-card p {
     margin: 0;
-    color: var(--text-muted);
+    color: #859289;
     font-size: 12px;
     line-height: 1.8;
 }
@@ -267,22 +264,23 @@ a {
     margin: 0 35px 100px;
     padding: 90px 30px;
 
-    border: 3px solid var(--statusline-1);
+    border: 3px solid #475258;
     border-radius: 50px;
 
-    background: var(--background-alt);
+    background: #2d353b;
 
     text-align: center;
 }
 
 .cta h2 {
     margin: 0 0 30px;
+    color: #d3c6aa;
+
     font-size: clamp(32px, 5vw, 55px);
     letter-spacing: -2px;
 }
 
 @media (max-width: 850px) {
-
     .hero {
         grid-template-columns: 1fr;
         padding-top: 70px;
@@ -299,7 +297,6 @@ a {
 }
 
 @media (max-width: 520px) {
-
     .navbar {
         padding: 0 17px;
     }
