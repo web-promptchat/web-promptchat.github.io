@@ -1,128 +1,116 @@
-
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Sign Up — PromptChat</title>
-
     <link rel="stylesheet" href="../css/auth.css">
 </head>
 
 <body>
-    <main class="auth-page">
 
-        <section class="auth-card">
 
-            <a href="../landing/" class="brand">
-                PromptChat
-            </a>
+<main class="auth-page">
+    <section class="auth-card">
 
-            <div class="auth-header">
-                <h1>Create your account</h1>
-                <p>Start messaging without the noise.</p>
+        <a href="../landing/" class="brand">PromptChat</a>
+
+        <div class="auth-header">
+            <h1>Create your account</h1>
+            <p>Start messaging without the noise.</p>
+        </div>
+
+        <form id="signup-form">
+
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="your_username"
+                    autocomplete="username"
+                    maxlength="32"
+                    required
+                >
             </div>
 
-            <form id="signup-form" class="auth-form">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="you@example.com"
+                    autocomplete="email"
+                    required
+                >
+            </div>
 
-                <div class="form-group">
-                    <label for="username">Username</label>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Create a password"
+                    autocomplete="new-password"
+                    required
+                >
+            </div>
 
-                    <input
-                        type="text"
-                        id="username"
-                        name="username"
-                        placeholder="your_username"
-                        autocomplete="username"
-                        maxlength="32"
-                        required
-                    >
-                </div>
+            <div class="form-group">
+                <label for="confirm-password">Confirm password</label>
+                <input
+                    type="password"
+                    id="confirm-password"
+                    name="confirm-password"
+                    placeholder="Enter your password again"
+                    autocomplete="new-password"
+                    required
+                >
+            </div>
 
-                <div class="form-group">
-                    <label for="email">Email</label>
+            <p id="form-message" class="form-message"></p>
 
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        placeholder="you@example.com"
-                        autocomplete="email"
-                        required
-                    >
-                </div>
+            <button type="submit" class="auth-button">
+                Create account
+            </button>
 
-                <div class="form-group">
-                    <label for="password">Password</label>
+        </form>
 
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        placeholder="Create a password"
-                        autocomplete="new-password"
-                        required
-                    >
-                </div>
+        <p class="auth-switch">
+            Already have an account?
+            <a href="../login/">Log in</a>
+        </p>
 
-                <div class="form-group">
-                    <label for="confirm-password">Confirm password</label>
+    </section>
+</main>
 
-                    <input
-                        type="password"
-                        id="confirm-password"
-                        name="confirm-password"
-                        placeholder="Enter your password again"
-                        autocomplete="new-password"
-                        required
-                    >
-                </div>
+<script>
+    const form = document.getElementById("signup-form");
+    const password = document.getElementById("password");
+    const confirmPassword = document.getElementById("confirm-password");
+    const message = document.getElementById("form-message");
 
-                <p id="form-message" class="form-message" aria-live="polite"></p>
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
 
-                <button type="submit" class="auth-button">
-                    Create account
-                </button>
+        message.textContent = "";
+        message.className = "form-message";
 
-            </form>
+        if (password.value !== confirmPassword.value) {
+            message.textContent = "Passwords do not match.";
+            message.classList.add("error");
+            return;
+        }
 
-            <p class="auth-switch">
-                Already have an account?
-                <a href="../login/">Log in</a>
-            </p>
+        message.textContent = "Account form is ready.";
+        message.classList.add("success");
+    });
+</script>
 
-        </section>
 
-    </main>
-
-    <script>
-        const form = document.getElementById("signup-form");
-        const password = document.getElementById("password");
-        const confirmPassword = document.getElementById("confirm-password");
-        const message = document.getElementById("form-message");
-
-        form.addEventListener("submit", (event) => {
-            event.preventDefault();
-
-            message.textContent = "";
-            message.className = "form-message";
-
-            if (password.value !== confirmPassword.value) {
-                message.textContent = "Passwords do not match.";
-                message.classList.add("error");
-                return;
-            }
-
-            /*
-             * Backend connection will be added later.
-             *
-             * For now, the form only validates the passwords.
-             */
-
-            message.textContent = "Form is ready — backend connection coming next.";
-            message.classList.add("success");
-        });
-    </script>
 </body>
 </html>
