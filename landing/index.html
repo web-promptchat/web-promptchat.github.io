@@ -1,56 +1,149 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>web-promptchat</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
 
-        body {
-            background-color: #1a1e21;
-            font-family: 'Courier New', Courier, monospace;
-            min-height: 100vh;
-            padding: 12px;
-            color: #b3c293;
-        }
+<html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>PromptChat — Messaging without the noise</title> <link rel="stylesheet" href="../css/landing.css"> </head>
 
-        .container {
-            border: 1px solid #7d8b63;
-            border-radius: 12px;
-            min-height: calc(100vh - 24px);
-            padding: 8px 16px;
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 14px;
-            letter-spacing: 0.5px;
-        }
-
-        .nav-link {
-            color: #b3c293;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .nav-link:hover {
-            opacity: 0.8;
-        }
-    </style>
-</head>
 <body>
-    <div class="container">
-        <nav class="navbar">
-            <a href="#" class="nav-link">web-promptchat</a>
-            <a href="#" class="nav-link">sign in</a>
-        </nav>
+
+<header class="navbar"> <a href="./" class="logo">PromptChat</a>
+
+<nav>
+    <a href="../login/">Log in</a>
+    <a href="../signup/" class="nav-button">Get started</a>
+</nav>
+
+</header>
+
+<main>
+
+<section class="hero">
+
+    <div class="hero-content">
+        <p class="eyebrow">SIMPLE. PRIVATE. LIGHTWEIGHT.</p>
+
+        <h1>
+            Messaging,<br>
+            without the noise.
+        </h1>
+
+        <p class="hero-text">
+            PromptChat is a simple, lightweight messaging service
+            built for conversations that actually matter.
+        </p>
+
+        <div class="hero-actions">
+            <a href="../signup/" class="primary-button">
+                Create an account
+            </a>
+
+            <a href="../login/" class="secondary-button">
+                Log in
+            </a>
+        </div>
     </div>
-</body>
-</html>
+
+    <div class="chat-preview">
+
+        <div class="preview-header">
+            <span class="status-dot"></span>
+            <span>PromptChat</span>
+        </div>
+
+        <div class="messages">
+
+            <div class="message other">
+                <span class="message-name">alex</span>
+                <div class="bubble">
+                    hey, are you around?
+                </div>
+            </div>
+
+            <div class="message own">
+                <div class="bubble">
+                    yeah, what's up?
+                </div>
+            </div>
+
+            <div class="message other">
+                <span class="message-name">alex</span>
+                <div class="bubble">
+                    nothing much :)
+                </div>
+            </div>
+
+        </div>
+
+        <div class="preview-input">
+            <span>Write a message...</span>
+            <span class="send-icon">→</span>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="features">
+
+    <div class="section-heading">
+        <p class="eyebrow">WHY PROMPTCHAT</p>
+        <h2>Everything you need.<br>Nothing you don't.</h2>
+    </div>
+
+    <div class="feature-grid">
+
+        <article class="feature-card">
+            <div class="feature-number">01</div>
+            <h3>Lightweight</h3>
+            <p>
+                No bloated interface. Just a fast,
+                focused place to chat.
+            </p>
+        </article>
+
+        <article class="feature-card">
+            <div class="feature-number">02</div>
+            <h3>Privacy focused</h3>
+            <p>
+                Your conversations belong to you.
+                Privacy is considered from the ground up.
+            </p>
+        </article>
+
+        <article class="feature-card">
+            <div class="feature-number">03</div>
+            <h3>Open & simple</h3>
+            <p>
+                A straightforward experience without
+                unnecessary complexity.
+            </p>
+        </article>
+
+    </div>
+
+</section>
+
+<section class="cta">
+
+    <p class="eyebrow">READY?</p>
+
+    <h2>Start a conversation.</h2>
+
+    <a href="../signup/" class="primary-button">
+        Create your account
+    </a>
+
+</section>
+
+</main>
+
+<footer> <span>© 2026 PromptChat</span>
+
+<div>
+    <a href="../login/">Log in</a>
+    <a href="../signup/">Sign up</a>
+</div>
+
+</footer>
+
+<script> /* * Temporary session check. * * This will be replaced with a real backend * authentication check once the auth API exists. */ const loggedIn = localStorage.getItem("promptchat_logged_in"); if (loggedIn === "true") { window.location.replace("../home/"); } </script>
+
+</body> </html>
