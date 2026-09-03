@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PromptChat</title>
+
+    <link rel="stylesheet" href="../css/home.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+
+        <div class="brand">
+            <span class="brand-name">PromptChat</span>
+            <span class="version">Ver. indev</span>
+        </div>
+
+        <div class="account">
+            <button class="account-button" id="account-button">
+                <span id="username">username</span>
+                <span class="dropdown-arrow">▾</span>
+            </button>
+
+            <div class="account-menu" id="account-menu">
+                <button id="add-account">Add another account</button>
+                <button id="logout">Logout</button>
+            </div>
+        </div>
+
+    </header>
+
+
+    <!-- MAIN APPLICATION -->
+    <div class="main">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+
+            <div class="sidebar-top">
+
+                <button class="new-chat-button" id="new-chat-button">
+                    <span class="new-chat-icon">+</span>
+                    <span class="sidebar-label">New Chat</span>
+                </button>
+
+                <div class="chats-title">
+                    <span class="sidebar-label">Chats</span>
+                </div>
+
+                <div class="chat-list" id="chat-list">
+                    <!-- Chats will be added here -->
+                </div>
+
+            </div>
+
+            <button class="collapse-button" id="collapse-button">
+                <span>‹</span>
+                <span class="sidebar-label">Collapse</span>
+            </button>
+
+        </aside>
+
+
+        <!-- CHAT AREA -->
+        <main class="chat-area">
+
+            <div class="messages" id="messages">
+                <!-- Messages will appear here -->
+            </div>
+
+            <div class="message-container">
+
+                <form class="message-form" id="message-form">
+
+                    <textarea
+                        id="message-input"
+                        placeholder="say hello!"
+                        rows="1"
+                    ></textarea>
+
+                    <button
+                        type="submit"
+                        class="send-button"
+                        aria-label="Send message"
+                    >
+                        ➤
+                    </button>
+
+                </form>
+
+            </div>
+
+        </main>
+
+    </div>
+
+</div>
+
+
+<!-- NEW CHAT MODAL -->
+<div class="modal-overlay" id="new-chat-modal">
+
+    <div class="new-chat-modal">
+
+        <div class="modal-header">
+            <h2>New Chat</h2>
+
+            <button
+                class="close-button"
+                id="close-modal"
+                aria-label="Close"
+            >
+                ×
+            </button>
+        </div>
+
+        <p class="modal-subtitle">
+            Search for users to add to your chat.
+        </p>
+
+        <input
+            id="user-search"
+            class="user-search"
+            type="text"
+            placeholder="Search users..."
+            autocomplete="off"
+        >
+
+        <div class="search-results" id="search-results">
+            <p class="search-placeholder">
+                Start typing to search for users.
+            </p>
+        </div>
+
+        <div class="selected-users" id="selected-users">
+            <!-- Selected users appear here -->
+        </div>
+
+        <button class="create-chat-button" id="create-chat-button">
+            Create Chat
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+    /* =========================
+       ACCOUNT DROPDOWN
+       ========================= */
+
+    const accountButton = document.getElementById("account-button");
+    const accountMenu = document.getElementById("account-menu");
+
+    accountButton.addEventListener("click", function (event) {
+        event.stopPropagation();
+
+        accountMenu.classList.toggle("open");
+    });
+
+    document.addEventListener("click", function () {
+        accountMenu.classList.remove("open");
+    });
+
+
+    /* =========================
+       SIDEBAR
+       ========================= */
+
+    const sidebar = document.getElementById("sidebar");
+    const collapseButton = document.getElementById("collapse-button");
+
+    collapseButton.addEventListener("click", function () {
+        sidebar.classList.toggle("collapsed");
+
+        if (sidebar.classList.contains("collapsed")) {
+            collapseButton.querySelector("span").textContent = "›";
+        } else {
+            collapseButton.querySelector("span").textContent = "‹";
+        }
+    });
+
+
+    /* =========================
+       NEW CHAT MODAL
+       ========================= */
+
+    const newChatButton = document.getElementById("new-chat-button");
+    const newChatModal = document.getElementById("new-chat-modal");
+    const closeModal = document.getElementById("close-modal");
+
+    newChatButton.addEventListener("click", function () {
+        newChatModal.classList.add("open");
+
+        setTimeout(function () {
+            document.getElementById("user-search").focus();
+        }, 100);
+    });
+
+    closeModal.addEventListener("click", function () {
+        newChatModal.classList.remove("open");
+    });
+
+    newChatModal.addEventListener("click", function (event) {
+        if (event.target === newChatModal) {
+            newChatModal.classList.remove("open");
+        }
+    });
+
+
+    /* =========================
+       USER SEARCH
+       ========================= */
+
+    const userSearch = document.getElementById("user-search");
+    const searchResults = document.getElementById("search-results");
+
+    userSearch.addEventListener("input", function () {
+
+        const query = userSearch.value.trim();
+
+        if (!query) {
+            searchResults.innerHTML = `
+                <p class="search-placeholder">
+                    Start typing to search for users.
+                </p>
+            `;
+
+            return;
+        }
+
+        /*
+         * TEMPORARY UI
+         *
+         * Real user searching will be connected to:
+         *
+         * GET /api/users/search?q=username
+         *
+         * once that backend route exists.
+         */
+
+        searchResults.innerHTML = `
+            <p class="search-placeholder">
+                User search will connect to the PromptChat server.
+            </p>
+        `;
+    });
+
+
+    /* =========================
+       MESSAGE INPUT
+       ========================= */
+
+    const messageInput = document.getElementById("message-input");
+
+    messageInput.addEventListener("input", function () {
+
+        this.style.height = "auto";
+
+        this.style.height =
+            Math.min(this.scrollHeight, 180) + "px";
+    });
+
+
+    /* =========================
+       SEND MESSAGE
+       ========================= */
+
+    const messageForm = document.getElementById("message-form");
+    const messages = document.getElementById("messages");
+
+    messageForm.addEventListener("submit", function (event) {
+
+        event.preventDefault();
+
+        const text = messageInput.value.trim();
+
+        if (!text) {
+            return;
+        }
+
+        /*
+         * TEMPORARY:
+         * Display the message locally.
+         *
+         * Actual message sending will be connected
+         * to the backend later.
+         */
+
+        const message = document.createElement("div");
+
+        message.className = "message own";
+
+        message.textContent = text;
+
+        messages.appendChild(message);
+
+        messageInput.value = "";
+        messageInput.style.height = "auto";
+
+        messages.scrollTop = messages.scrollHeight;
+    });
+
+
+    /* =========================
+       ENTER TO SEND
+       ========================= */
+
+    messageInput.addEventListener("keydown", function (event) {
+
+        if (event.key === "Enter" && !event.shiftKey) {
+
+            event.preventDefault();
+
+            messageForm.requestSubmit();
+        }
+    });
+
+
+    /* =========================
+       ACCOUNT ACTIONS
+       ========================= */
+
+    document.getElementById("add-account").addEventListener("click", function () {
+
+        /*
+         * This will eventually go to the
+         * account-management page.
+         */
+
+        console.log("Add another account");
+    });
+
+
+    document.getElementById("logout").addEventListener("click", function () {
+
+        /*
+         * Actual logout/session handling
+         * will be added with authentication.
+         */
+
+        console.log("Logout");
+    });
+</script>
+
+</body>
+</html>
