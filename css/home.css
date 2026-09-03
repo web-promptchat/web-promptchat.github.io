@@ -9,17 +9,12 @@
     --input-background: #2d353b;
     --error: #e67e80;
 
-    --border-width: 3px;
-    --radius: 50px;
+    --border-width: 2px;
+    --radius: 30px;
 
-    --topbar-height: 74px;
-    --sidebar-width: 280px;
+    --topbar-height: 52px;
+    --sidebar-width: 180px;
 }
-
-
-/* =========================
-   RESET
-   ========================= */
 
 * {
     box-sizing: border-box;
@@ -30,21 +25,14 @@ body {
     margin: 0;
     width: 100%;
     height: 100%;
-
     overflow: hidden;
 }
 
 body {
     background: var(--background-dim);
     color: var(--text);
-
     font-family: "JetBrains Mono", monospace;
 }
-
-
-/* =========================
-   APP
-   ========================= */
 
 .app {
     width: 100%;
@@ -63,7 +51,7 @@ body {
     height: var(--topbar-height);
     min-height: var(--topbar-height);
 
-    padding: 0 28px;
+    padding: 0 18px;
 
     border-bottom: var(--border-width) solid var(--statusline-1);
 
@@ -72,26 +60,21 @@ body {
     justify-content: space-between;
 }
 
-
-/* BRAND */
-
 .brand {
     display: flex;
     align-items: baseline;
-    gap: 12px;
+    gap: 8px;
 }
 
 .brand-name {
     color: var(--bg-green);
-
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 700;
 }
 
 .version {
     color: var(--text-muted);
-
-    font-size: 11px;
+    font-size: 8px;
 }
 
 
@@ -102,23 +85,23 @@ body {
 }
 
 .account-button {
-    padding: 10px 16px;
+    padding: 7px 11px;
 
     border: var(--border-width) solid var(--statusline-1);
-    border-radius: var(--radius);
+    border-radius: 30px;
 
     background: var(--input-background);
     color: var(--text);
 
     font-family: inherit;
-    font-size: 12px;
+    font-size: 9px;
     font-weight: 600;
 
     cursor: pointer;
 
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 7px;
 }
 
 .account-button:hover {
@@ -127,7 +110,7 @@ body {
 
 .dropdown-arrow {
     color: var(--bg-green);
-    font-size: 14px;
+    font-size: 11px;
 }
 
 
@@ -135,15 +118,15 @@ body {
 
 .account-menu {
     position: absolute;
-    top: calc(100% + 10px);
+    top: calc(100% + 7px);
     right: 0;
 
-    width: 210px;
+    width: 150px;
 
-    padding: 8px;
+    padding: 5px;
 
     border: var(--border-width) solid var(--statusline-1);
-    border-radius: 25px;
+    border-radius: 18px;
 
     background: var(--input-background);
 
@@ -163,23 +146,22 @@ body {
 .account-menu.open {
     opacity: 1;
     visibility: visible;
-
     transform: translateY(0);
 }
 
 .account-menu button {
     width: 100%;
 
-    padding: 12px 14px;
+    padding: 9px 11px;
 
     border: 0;
-    border-radius: 18px;
+    border-radius: 13px;
 
     background: transparent;
     color: var(--text);
 
     font-family: inherit;
-    font-size: 12px;
+    font-size: 9px;
     text-align: left;
 
     cursor: pointer;
@@ -211,7 +193,7 @@ body {
     width: var(--sidebar-width);
     min-width: var(--sidebar-width);
 
-    padding: 20px 15px;
+    padding: 13px 10px;
 
     border-right: var(--border-width) solid var(--statusline-1);
 
@@ -226,11 +208,11 @@ body {
 }
 
 .sidebar.collapsed {
-    width: 76px;
-    min-width: 76px;
+    width: 50px;
+    min-width: 50px;
 
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 7px;
+    padding-right: 7px;
 }
 
 
@@ -239,16 +221,16 @@ body {
 .new-chat-button {
     width: 100%;
 
-    padding: 14px 18px;
+    padding: 9px 12px;
 
     border: var(--border-width) solid var(--bg-green);
-    border-radius: var(--radius);
+    border-radius: 30px;
 
     background: var(--bg-green);
     color: var(--background-dim);
 
     font-family: inherit;
-    font-size: 12px;
+    font-size: 9px;
     font-weight: 700;
 
     cursor: pointer;
@@ -256,7 +238,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 9px;
+    gap: 6px;
 }
 
 .new-chat-button:hover {
@@ -264,7 +246,7 @@ body {
 }
 
 .new-chat-icon {
-    font-size: 18px;
+    font-size: 14px;
     line-height: 1;
 }
 
@@ -272,11 +254,11 @@ body {
 /* CHATS TITLE */
 
 .chats-title {
-    margin: 28px 8px 12px;
+    margin: 19px 6px 8px;
 
     color: var(--text-muted);
 
-    font-size: 11px;
+    font-size: 8px;
     font-weight: 700;
     text-transform: uppercase;
 }
@@ -287,22 +269,22 @@ body {
 .chat-list {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 3px;
 }
 
 .chat-item {
     width: 100%;
 
-    padding: 12px 14px;
+    padding: 8px 10px;
 
     border: 0;
-    border-radius: 20px;
+    border-radius: 13px;
 
     background: transparent;
     color: var(--text);
 
     font-family: inherit;
-    font-size: 12px;
+    font-size: 9px;
     text-align: left;
 
     cursor: pointer;
@@ -327,23 +309,23 @@ body {
 .collapse-button {
     width: 100%;
 
-    padding: 12px;
+    padding: 8px;
 
     border: var(--border-width) solid var(--statusline-1);
-    border-radius: var(--radius);
+    border-radius: 30px;
 
     background: transparent;
     color: var(--text-muted);
 
     font-family: inherit;
-    font-size: 11px;
+    font-size: 8px;
 
     cursor: pointer;
 
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 5px;
 }
 
 .collapse-button:hover {
@@ -353,7 +335,7 @@ body {
 
 .collapse-button > span:first-child {
     color: var(--bg-green);
-    font-size: 20px;
+    font-size: 15px;
     line-height: 1;
 }
 
@@ -365,11 +347,11 @@ body {
 }
 
 .sidebar.collapsed .new-chat-button {
-    padding: 14px 0;
+    padding: 9px 0;
 }
 
 .sidebar.collapsed .new-chat-icon {
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .sidebar.collapsed .chats-title {
@@ -377,7 +359,7 @@ body {
 }
 
 .sidebar.collapsed .collapse-button {
-    padding: 12px 0;
+    padding: 8px 0;
 }
 
 
@@ -395,40 +377,37 @@ body {
     flex-direction: column;
 }
 
-
-/* MESSAGES */
-
 .messages {
     min-height: 0;
 
     flex: 1;
 
-    padding: 30px;
+    padding: 20px;
 
     overflow-y: auto;
 
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    gap: 12px;
+    gap: 8px;
 }
 
 
 /* MESSAGE */
 
 .message {
-    max-width: min(70%, 700px);
+    max-width: min(70%, 500px);
 
-    padding: 13px 18px;
+    padding: 9px 13px;
 
     border: var(--border-width) solid var(--statusline-1);
-    border-radius: 25px;
+    border-radius: 17px;
 
     background: var(--input-background);
 
     color: var(--text);
 
-    font-size: 13px;
+    font-size: 9px;
     line-height: 1.6;
 
     word-wrap: break-word;
@@ -449,14 +428,14 @@ body {
    ========================= */
 
 .message-container {
-    padding: 18px 28px 25px;
+    padding: 11px 18px 15px;
 }
 
 .message-form {
     width: 100%;
 
     border: var(--border-width) solid var(--statusline-1);
-    border-radius: var(--radius);
+    border-radius: 30px;
 
     background: var(--input-background);
 
@@ -471,12 +450,12 @@ body {
 }
 
 #message-input {
-    min-height: 50px;
-    max-height: 180px;
+    min-height: 36px;
+    max-height: 120px;
 
     flex: 1;
 
-    padding: 15px 20px;
+    padding: 10px 13px;
 
     border: 0;
     outline: none;
@@ -487,7 +466,7 @@ body {
     color: var(--text);
 
     font-family: inherit;
-    font-size: 13px;
+    font-size: 9px;
     line-height: 1.5;
 }
 
@@ -496,13 +475,13 @@ body {
 }
 
 
-/* SEND BUTTON */
+/* SEND */
 
 .send-button {
-    width: 44px;
-    height: 44px;
+    width: 32px;
+    height: 32px;
 
-    margin: 5px;
+    margin: 3px;
     padding: 0;
 
     border: 0;
@@ -512,7 +491,7 @@ body {
     color: var(--background-dim);
 
     font-family: inherit;
-    font-size: 17px;
+    font-size: 12px;
     font-weight: 700;
 
     cursor: pointer;
@@ -533,7 +512,7 @@ body {
     position: fixed;
     inset: 0;
 
-    padding: 24px;
+    padding: 18px;
 
     background: rgba(35, 42, 46, 0.75);
 
@@ -556,17 +535,14 @@ body {
     visibility: visible;
 }
 
-
-/* NEW CHAT MODAL */
-
 .new-chat-modal {
     width: 100%;
-    max-width: 460px;
+    max-width: 300px;
 
-    padding: 35px;
+    padding: 22px;
 
     border: var(--border-width) solid var(--statusline-1);
-    border-radius: var(--radius);
+    border-radius: 30px;
 
     background: var(--background-dim);
 
@@ -579,9 +555,6 @@ body {
     transform: translateY(0);
 }
 
-
-/* MODAL HEADER */
-
 .modal-header {
     display: flex;
     align-items: center;
@@ -593,12 +566,12 @@ body {
 
     color: var(--text);
 
-    font-size: 20px;
+    font-size: 14px;
 }
 
 .close-button {
-    width: 36px;
-    height: 36px;
+    width: 27px;
+    height: 27px;
 
     border: var(--border-width) solid var(--statusline-1);
     border-radius: 50%;
@@ -607,7 +580,7 @@ body {
     color: var(--text-muted);
 
     font-family: inherit;
-    font-size: 20px;
+    font-size: 15px;
 
     cursor: pointer;
 }
@@ -617,28 +590,22 @@ body {
     color: var(--bg-green);
 }
 
-
-/* MODAL SUBTITLE */
-
 .modal-subtitle {
-    margin: 10px 0 25px;
+    margin: 7px 0 16px;
 
     color: var(--text-muted);
 
-    font-size: 12px;
+    font-size: 8px;
     line-height: 1.6;
 }
-
-
-/* USER SEARCH */
 
 .user-search {
     width: 100%;
 
-    padding: 15px 18px;
+    padding: 10px 12px;
 
     border: var(--border-width) solid var(--statusline-1);
-    border-radius: var(--radius);
+    border-radius: 30px;
 
     outline: none;
 
@@ -646,7 +613,7 @@ body {
     color: var(--text);
 
     font-family: inherit;
-    font-size: 12px;
+    font-size: 9px;
 }
 
 .user-search::placeholder {
@@ -657,70 +624,61 @@ body {
     border-color: var(--bg-green);
 }
 
-
-/* SEARCH RESULTS */
-
 .search-results {
-    min-height: 70px;
+    min-height: 50px;
 
-    margin-top: 15px;
+    margin-top: 10px;
 
-    padding: 10px;
+    padding: 7px;
 
-    border-radius: 25px;
+    border-radius: 17px;
 
     background: var(--input-background);
 }
 
 .search-placeholder {
-    margin: 10px;
+    margin: 7px;
 
     color: var(--text-muted);
 
-    font-size: 11px;
+    font-size: 8px;
     line-height: 1.6;
     text-align: center;
 }
 
-
-/* SELECTED USERS */
-
 .selected-users {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 5px;
 
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
 .selected-user {
-    padding: 8px 12px;
+    padding: 5px 8px;
 
     border: 2px solid var(--bg-green);
-    border-radius: 20px;
+    border-radius: 15px;
 
     color: var(--bg-green);
 
-    font-size: 11px;
+    font-size: 8px;
 }
-
-
-/* CREATE CHAT */
 
 .create-chat-button {
     width: 100%;
 
-    margin-top: 20px;
-    padding: 15px;
+    margin-top: 13px;
+    padding: 10px;
 
     border: var(--border-width) solid var(--bg-green);
-    border-radius: var(--radius);
+    border-radius: 30px;
 
     background: var(--bg-green);
     color: var(--background-dim);
 
     font-family: inherit;
-    font-size: 12px;
+    font-size: 9px;
     font-weight: 700;
 
     cursor: pointer;
@@ -736,7 +694,7 @@ body {
    ========================= */
 
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -760,35 +718,35 @@ body {
 @media (max-width: 700px) {
 
     :root {
-        --topbar-height: 68px;
+        --topbar-height: 48px;
     }
 
     .topbar {
-        padding: 0 16px;
+        padding: 0 12px;
     }
 
     .brand {
-        gap: 7px;
+        gap: 5px;
     }
 
     .brand-name {
-        font-size: 17px;
+        font-size: 13px;
     }
 
     .version {
-        font-size: 9px;
+        font-size: 7px;
     }
 
     .account-button {
-        padding: 9px 12px;
+        padding: 6px 9px;
     }
 
     .sidebar {
-        width: 76px;
-        min-width: 76px;
+        width: 50px;
+        min-width: 50px;
 
-        padding-left: 10px;
-        padding-right: 10px;
+        padding-left: 7px;
+        padding-right: 7px;
     }
 
     .sidebar .sidebar-label {
@@ -796,7 +754,7 @@ body {
     }
 
     .new-chat-button {
-        padding: 14px 0;
+        padding: 9px 0;
     }
 
     .chats-title {
@@ -804,15 +762,15 @@ body {
     }
 
     .collapse-button {
-        padding: 12px 0;
+        padding: 8px 0;
     }
 
     .message-container {
-        padding: 12px 15px 18px;
+        padding: 8px 10px 11px;
     }
 
     .messages {
-        padding: 20px 15px;
+        padding: 13px 10px;
     }
 
     .message {
@@ -820,8 +778,8 @@ body {
     }
 
     .new-chat-modal {
-        padding: 30px 25px;
+        padding: 20px;
 
-        border-radius: 40px;
+        border-radius: 27px;
     }
 }
