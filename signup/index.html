@@ -1,37 +1,132 @@
+
 <!DOCTYPE html>
 
-<html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Sign Up — PromptChat</title> <link rel="stylesheet" href="../css/auth.css"> </head> <body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up — PromptChat</title>
+    <link rel="stylesheet" href="../css/auth.css">
+</head>
 
-<div class="auth-card"> <a class="logo" href="../landing/">PromptChat</a>
+<body>
 
-<h1>Create your account</h1>
-<p class="subtitle">Start messaging without the noise.</p>
+<div class="auth-card">
+    <a class="logo" href="../landing/">PromptChat</a>
 
-<form id="signup-form">
-    <label for="username">Username</label>
-    <input id="username" type="text" placeholder="your_username" maxlength="32" required>
+    <h1>Create your account</h1>
+    <p class="subtitle">Start messaging without the noise.</p>
 
-    <label for="email">Email</label>
-    <input id="email" type="email" placeholder="you@example.com" required>
+    <form id="signup-form">
 
-    <label for="password">Password</label>
-    <input id="password" type="password" placeholder="Create a password" required>
+        <label for="username">Username</label>
+        <input
+            id="username"
+            type="text"
+            placeholder="your_username"
+            maxlength="32"
+            required
+        >
 
-    <label for="confirm-password">Confirm password</label>
-    <input id="confirm-password" type="password" placeholder="Enter your password again" required>
+        <label for="email">Email</label>
+        <input
+            id="email"
+            type="email"
+            placeholder="you@example.com"
+            required
+        >
 
-    <p id="message"></p>
+        <label for="password">Password</label>
+        <input
+            id="password"
+            type="password"
+            placeholder="Create a password"
+            required
+        >
 
-    <button type="submit">Create account</button>
-</form>
+        <label for="confirm-password">Confirm password</label>
+        <input
+            id="confirm-password"
+            type="password"
+            placeholder="Enter your password again"
+            required
+        >
 
-<p class="switch">
-    Already have an account?
-    <a href="../login/">Log in</a>
-</p>
+        <p id="message"></p>
+
+        <button type="submit">Create account</button>
+
+    </form>
+
+    <p class="switch">
+        Already have an account?
+        <a href="../login/">Log in</a>
+    </p>
 
 </div>
 
-<script> const form = document.getElementById("signup-form"); const password = document.getElementById("password"); const confirmPassword = document.getElementById("confirm-password"); const message = document.getElementById("message"); form.addEventListener("submit", function(event) { event.preventDefault(); if (password.value !== confirmPassword.value) { message.textContent = "Passwords do not match."; message.className = "error"; return; } message.textContent = "Ready to create your account."; message.className = "success"; }); </script>
+<script>
+    const form = document.getElementById("signup-form");
+    const password = document.getElementById("password");
+    const confirmPassword = document.getElementById("confirm-password");
+    const message = document.getElementById("message");
 
-</body> </html>
+    // Raspberry Pi API — temporary LAN address for testing
+    const API_URL = "http://10.0.0.29:3000";
+
+    form.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        const username = document.getElementById("username").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const passwordValue = password.value;
+
+        // Check that both passwords match
+        if (passwordValue !== confirmPassword.value) {
+            message.textContent = "Passwords do not match.";
+            message.className = "error";
+            return;
+        }
+
+        message.textContent = "Creating your account...";
+        message.className = "";
+
+        try {
+            const response = await fetch(`${API_URL}/api/auth/signup`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    username: username,
+                    email: email,
+                    password: passwordValue
+                })
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                message.textContent = data.error || "Something went wrong.";
+                message.className = "error";
+                return;
+            }
+
+            message.textContent = "Account created successfully!";
+            message.className = "success";
+
+            form.reset();
+
+        } catch (error) {
+            console.error("Signup request failed:", error);
+
+            message.textContent =
+                "Unable to connect to the PromptChat server.";
+            message.className = "error";
+        }
+    });
+</script>
+
+</body>
+</html>
+```
