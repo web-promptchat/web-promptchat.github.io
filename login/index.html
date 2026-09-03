@@ -79,12 +79,14 @@
                 return;
             }
 
-            message.textContent = "Logged in successfully!";
-            message.className = "success";
+           message.textContent = "Logged in successfully!";
+message.className = "success";
 
-            console.log("Logged in user:", data.user);
+console.log("Logged in user:", data.user);
 
-            // We'll add the actual logged-in session/redirect here later.
+setTimeout(function () {
+    window.location.href = "../home/";
+}, 500);
             
         } catch (error) {
             console.error("Login request failed:", error);
