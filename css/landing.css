@@ -20,7 +20,7 @@ html {
 
 body {
     margin: 0;
-    background: var(--background-dim);
+    background: #232a2e !important;
     color: var(--text);
     font-family: "JetBrains Mono", monospace;
 }
