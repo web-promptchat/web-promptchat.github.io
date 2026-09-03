@@ -1,116 +1,37 @@
 <!DOCTYPE html>
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up — PromptChat</title>
-    <link rel="stylesheet" href="../css/auth.css">
-</head>
+<html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Sign Up — PromptChat</title> <link rel="stylesheet" href="../css/auth.css"> </head> <body>
 
-<body>
+<div class="auth-card"> <a class="logo" href="../landing/">PromptChat</a>
 
+<h1>Create your account</h1>
+<p class="subtitle">Start messaging without the noise.</p>
 
-<main class="auth-page">
-    <section class="auth-card">
+<form id="signup-form">
+    <label for="username">Username</label>
+    <input id="username" type="text" placeholder="your_username" maxlength="32" required>
 
-        <a href="../landing/" class="brand">PromptChat</a>
+    <label for="email">Email</label>
+    <input id="email" type="email" placeholder="you@example.com" required>
 
-        <div class="auth-header">
-            <h1>Create your account</h1>
-            <p>Start messaging without the noise.</p>
-        </div>
+    <label for="password">Password</label>
+    <input id="password" type="password" placeholder="Create a password" required>
 
-        <form id="signup-form">
+    <label for="confirm-password">Confirm password</label>
+    <input id="confirm-password" type="password" placeholder="Enter your password again" required>
 
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input
-                    type="text"
-                    id="username"
-                    name="username"
-                    placeholder="your_username"
-                    autocomplete="username"
-                    maxlength="32"
-                    required
-                >
-            </div>
+    <p id="message"></p>
 
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="you@example.com"
-                    autocomplete="email"
-                    required
-                >
-            </div>
+    <button type="submit">Create account</button>
+</form>
 
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    placeholder="Create a password"
-                    autocomplete="new-password"
-                    required
-                >
-            </div>
+<p class="switch">
+    Already have an account?
+    <a href="../login/">Log in</a>
+</p>
 
-            <div class="form-group">
-                <label for="confirm-password">Confirm password</label>
-                <input
-                    type="password"
-                    id="confirm-password"
-                    name="confirm-password"
-                    placeholder="Enter your password again"
-                    autocomplete="new-password"
-                    required
-                >
-            </div>
+</div>
 
-            <p id="form-message" class="form-message"></p>
+<script> const form = document.getElementById("signup-form"); const password = document.getElementById("password"); const confirmPassword = document.getElementById("confirm-password"); const message = document.getElementById("message"); form.addEventListener("submit", function(event) { event.preventDefault(); if (password.value !== confirmPassword.value) { message.textContent = "Passwords do not match."; message.className = "error"; return; } message.textContent = "Ready to create your account."; message.className = "success"; }); </script>
 
-            <button type="submit" class="auth-button">
-                Create account
-            </button>
-
-        </form>
-
-        <p class="auth-switch">
-            Already have an account?
-            <a href="../login/">Log in</a>
-        </p>
-
-    </section>
-</main>
-
-<script>
-    const form = document.getElementById("signup-form");
-    const password = document.getElementById("password");
-    const confirmPassword = document.getElementById("confirm-password");
-    const message = document.getElementById("form-message");
-
-    form.addEventListener("submit", function (event) {
-        event.preventDefault();
-
-        message.textContent = "";
-        message.className = "form-message";
-
-        if (password.value !== confirmPassword.value) {
-            message.textContent = "Passwords do not match.";
-            message.classList.add("error");
-            return;
-        }
-
-        message.textContent = "Account form is ready.";
-        message.classList.add("success");
-    });
-</script>
-
-
-</body>
-</html>
+</body> </html>
