@@ -1,0 +1,182 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap");
+
+:root {
+    --background-dim: #232a2e;
+    --bg-green: #a7c080;
+    --statusline-1: #475258;
+    --text: #d3c6aa;
+    --text-muted: #859289;
+    --input-background: #2d353b;
+    --error: #e67e80;
+
+    --border-width: 3px;
+    --radius: 50px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    padding: 24px;
+
+    background: var(--background-dim);
+    color: var(--text);
+
+    font-family: "JetBrains Mono", monospace;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 460px;
+    padding: 45px;
+
+    border: var(--border-width) solid var(--statusline-1);
+    border-radius: var(--radius);
+
+    background: var(--background-dim);
+}
+
+.logo {
+    display: block;
+    margin-bottom: 35px;
+
+    color: #a7c080;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+}
+
+h1 {
+    margin: 0 0 10px;
+
+    color: var(--text);
+
+    font-size: 26px;
+    text-align: center;
+}
+
+.subtitle {
+    margin: 0 0 30px;
+
+    color: var(--text-muted);
+
+    font-size: 13px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label {
+    margin-top: 8px;
+
+    color: var(--text);
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+input {
+    width: 100%;
+    padding: 15px 18px;
+
+    border: var(--border-width) solid var(--statusline-1);
+    border-radius: var(--radius);
+
+    outline: none;
+
+    background: var(--input-background);
+    color: var(--text);
+
+    font-family: inherit;
+    font-size: 13px;
+}
+
+input::placeholder {
+    color: var(--text-muted);
+}
+
+input:focus {
+    border-color: var(--bg-green);
+}
+
+button {
+    width: 100%;
+    margin-top: 15px;
+    padding: 16px;
+
+    border: var(--border-width) solid var(--bg-green);
+    border-radius: var(--radius);
+
+    background: var(--bg-green);
+    color: var(--background-dim);
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+#message {
+    min-height: 18px;
+    margin: 5px 0 0;
+
+    font-size: 12px;
+}
+
+.error {
+    color: var(--error);
+}
+
+.success {
+    color: var(--bg-green);
+}
+
+.switch {
+    margin: 25px 0 0;
+
+    color: var(--text-muted);
+
+    font-size: 12px;
+    text-align: center;
+}
+
+.switch a {
+    color: var(--bg-green);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.switch a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 520px) {
+    .auth-card {
+        padding: 35px 25px;
+        border-radius: 40px;
+    }
+}
